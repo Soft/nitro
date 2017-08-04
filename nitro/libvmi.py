@@ -194,7 +194,7 @@ class Libvmi:
         buffer_c = create_string_buffer(buffer)
         nb_written = self.libvmi.vmi_write_va(self.vmi, vaddr_c, pid_c, buffer_c, count_c)
         if nb_written == 0 or nb_written != count:
-            logging.debug('VMI_FAILURE trying to write %s, with %s', hex(vaddr), 'write_va')
+            logging.debug('VMI_FAILURE trying to write %s, with %s, returned %d', hex(vaddr), 'write_va', nb_written)
             raise LibvmiError('VMI_FAILURE')
         return nb_written
 
