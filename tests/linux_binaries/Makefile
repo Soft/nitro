@@ -1,5 +1,5 @@
 CC ?= gcc
-CFLAGS += -std=gnu99 -Wall -O2
+CFLAGS += -std=gnu99 -Wall -O2 -static
 OUTDIR = build
 SOURCES = $(wildcard *.c)
 TARGETS = $(patsubst %.c, $(OUTDIR)/%, $(SOURCES))
