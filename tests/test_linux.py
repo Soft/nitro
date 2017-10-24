@@ -11,6 +11,47 @@ class TestLinux(unittest.TestCase):
     test_helper = LinuxVMTestHelper
     layer = VMLayer
 
+    def test_handler_control(self):
+        """Test bypassing guest's system call handlers"""
+
+        found = False
+        unlink_done = False
+
+        def unlink_hook(syscall, backend):
+            nonlocal unlink_done
+            process = syscall.process
+            if process is not None and process.name == "test_unlink_check_result":
+                # If we were really careful we could check that the unlink call was for needle
+                # Now we just asume the test binary is not going to call unlink
+                unlink_done = True
+                pass # Do something to bypass the handler
+
+        def stat_hook(syscall, backend):
+            nonlocal found
+            process = syscall.process
+            if process is not None and \
+               process.name == "test_unlink_check_result" and \
+               unlink_done:
+                if syscall.event.regs.rax == 0:
+                    # We managed to bypass the unlink handler
+                    logging.debug("stat exited without error: file was not removed")
+                    found = true
+                else:
+                    logging.debug("stat exitted with an error: file was likely removed")
+                
+        enter_hooks = {
+            "unlink": unlink_hook
+        }
+
+        exit_hooks = {
+            "newstat": stat_hook
+        }
+
+        self.run_binary_test("test_unlink_check_result",
+                             enter_hooks=enter_hooks,
+                             exit_hooks=exit_hooks)
+        self.assertTrue(found)
+
     def test_open(self):
         """Execute a program that invokes open system call and check that it appears in the event stream"""
 
