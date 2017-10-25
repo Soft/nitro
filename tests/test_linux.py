@@ -20,24 +20,31 @@ class TestLinux(unittest.TestCase):
         def unlink_hook(syscall, backend):
             nonlocal unlink_done
             process = syscall.process
-            if process is not None and process.name == "test_unlink_check_result":
+            if process is not None and process.name == "test_unlink_che":
                 # If we were really careful we could check that the unlink call was for needle
                 # Now we just asume the test binary is not going to call unlink
                 unlink_done = True
+
+                logging.debug("unlink hook for test binary called")
+
+                # How to bypass system call handlers - a plan
+                # When Nitro traps the system call 
+
                 pass # Do something to bypass the handler
 
         def stat_hook(syscall, backend):
             nonlocal found
-            process = syscall.process
+            process = syscall.process # Process.name isn't the full binary name on Linux
             if process is not None and \
-               process.name == "test_unlink_check_result" and \
-               unlink_done:
-                if syscall.event.regs.rax == 0:
-                    # We managed to bypass the unlink handler
-                    logging.debug("stat exited without error: file was not removed")
-                    found = true
-                else:
-                    logging.debug("stat exitted with an error: file was likely removed")
+               process.name == "test_unlink_che":
+                logging.debug("stat hook for test binary called")
+                if unlink_done:
+                    if syscall.event.regs.rax == 0:
+                        # We managed to bypass the unlink handler
+                        logging.debug("stat exited without error: file was not removed")
+                        found = True
+                    else:
+                        logging.debug("stat exitted with an error: file was likely removed")
                 
         enter_hooks = {
             "unlink": unlink_hook
