@@ -27,10 +27,13 @@ class TestLinux(unittest.TestCase):
 
                 logging.debug("unlink hook for test binary called")
 
-                # How to bypass system call handlers - a plan
-                # When Nitro traps the system call 
+                # This works for me but it of course not enough to fully undo effects of SYSCALL
+                # I think bunch of registers are still messed up after this
 
-                pass # Do something to bypass the handler
+                rcx = syscall.event.get_register("rcx")
+                rip = syscall.event.get_register("rip")
+                logging.debug("rcx: %s, rip: %s", hex(rcx), hex(rip))
+                syscall.event.update_register("rip", rcx)
 
         def stat_hook(syscall, backend):
             nonlocal found
