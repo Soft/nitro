@@ -207,6 +207,7 @@ class VCPU(IOCTL):
     KVM_NITRO_SET_REGS = IOW(KVMIO, 0xE8, Regs)
     KVM_NITRO_GET_SREGS = IOR(KVMIO, 0xE9, SRegs)
     KVM_NITRO_SET_SREGS = IOW(KVMIO, 0xEA, SRegs)
+    KVM_NITRO_CONTINUE_STEP_OVER = IO(KVMIO, 0xEB)
 
     def __init__(self, vcpu_nb, vcpu_fd):
         super().__init__()
@@ -226,6 +227,10 @@ class VCPU(IOCTL):
     def continue_vm(self):
         # logging.debug('continue_vm %s', self.vcpu_nb)
         return self.make_ioctl(self.KVM_NITRO_CONTINUE, 0)
+
+    def continue_step_over_vm(self):
+        logging.debug('stepping over system call invocation (cpu: %s)', self.vcpu_nb)
+        return self.make_ioctl(self.KVM_NITRO_CONTINUE_STEP_OVER, 0)
 
     def get_regs(self):
         regs = Regs()

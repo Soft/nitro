@@ -8,11 +8,17 @@ import threading
 from queue import Queue, Empty
 from concurrent.futures import ThreadPoolExecutor, wait
 
+from enum import Enum
+
 from nitro.event import NitroEvent
 from nitro.kvm import KVM, VM
 
 class QEMUNotFoundError(Exception):
     pass
+
+class ContinuationType(Enum):
+    DIRECT = 1
+    STEP_OVER = 2
 
 def find_qemu_pid(vm_name):
     logging.info('Finding QEMU pid for domain %s', vm_name)
@@ -42,7 +48,8 @@ class Listener:
         'stop_request',
         'futures',
         'queue',
-        'current_cont_event',
+        'current_cont_queue',
+        'current_cont_type'
     )
 
     def __init__(self, domain):
@@ -59,7 +66,8 @@ class Listener:
         self.stop_request = None
         self.futures = None
         self.queue = None
-        self.current_cont_event = None
+        self.current_cont_queue = None
+        self.current_cont_type = ContinuationType.DIRECT
 
     def set_traps(self, enabled):
         if self.domain.isActive():
@@ -82,7 +90,7 @@ class Listener:
         pool = ThreadPoolExecutor(max_workers=len(self.vcpus_io))
         self.futures = []
         self.queue = Queue(maxsize=1)
-        self.current_cont_event = None
+        self.current_cont_queue = None
         for vcpu_io in self.vcpus_io:
             # start to listen on this vcpu and report events in the queue
             f = pool.submit(self.listen_vcpu, vcpu_io, self.queue)
@@ -91,16 +99,16 @@ class Listener:
         # while a thread is still running
         while [f for f in self.futures if f.running()]:
             try:
-                (event, continue_event) = self.queue.get(timeout=1)
+                (event, continue_queue) = self.queue.get(timeout=1)
             except Empty:
                 # domain has crashed or is shutdown ?
                 if not self.domain.isActive():
                     self.stop_request.set()
             else:
-                # remember last continue_event for stop_listen()
-                self.current_cont_event = continue_event
+                self.current_cont_queue = continue_queue
                 yield event
-                continue_event.set()
+                op = self.pop_current_continuation()
+                continue_queue.put(op)
 
         # raise listen_vcpu exceptions if any
         for f in self.futures:
@@ -108,10 +116,19 @@ class Listener:
                 raise f.exception()
         logging.info('Stop Nitro listening')
 
+    def set_continuation(self, type_):
+        self.current_cont_type = type_
+
+    def pop_current_continuation(self):
+        op = self.current_cont_type
+        # Reset to the default
+        self.current_cont_type = ContinuationType.DIRECT
+        return op
+
     def listen_vcpu(self, vcpu_io, queue):
         logging.info('Start listening on VCPU %s', vcpu_io.vcpu_nb)
         # we need a per thread continue event
-        continue_event = threading.Event()
+        continue_queue = Queue(maxsize=1)
         while not self.stop_request.is_set():
             try:
                 nitro_raw_ev = vcpu_io.get_event()
@@ -122,12 +139,16 @@ class Listener:
                 # put the event in the queue
                 # and wait for the event to be processed,
                 # when the main thread will set the continue_event
-                item = (e, continue_event)
+                item = (e, continue_queue)
                 queue.put(item)
-                continue_event.wait()
+                op = continue_queue.get(True)
                 # reset continue_event
-                continue_event.clear()
-                vcpu_io.continue_vm()
+                if op == ContinuationType.DIRECT:
+                    vcpu_io.continue_vm()
+                elif op == ContinuationType.STEP_OVER:
+                    vcpu_io.continue_step_over_vm()
+                else:
+                    raise TypeError("Invalid continuation type")
 
         logging.debug('stop listening on VCPU %s', vcpu_io.vcpu_nb)
 
@@ -137,15 +158,15 @@ class Listener:
         nb_threads = len([f for f in self.futures if f.running()])
         if nb_threads:
             # ack current thread
-            self.current_cont_event.set()
+            self.current_cont_queue.put(ContinuationType.DIRECT)
             # wait for current thread to terminate
             while [f for f in self.futures if f.running()] == nb_threads:
                 time.sleep(0.1)
             # ack the rest of the threads
             while [f for f in self.futures if f.running()]:
                 if self.queue.full():
-                    (*rest, continue_event) = self.queue.get()
-                    continue_event.set()
+                    (*rest, continue_queue) = self.queue.get()
+                    continue_queue.put(ContinuationType.DIRECT)
                 # let the threads terminate
                 time.sleep(0.1)
             # wait for threads to exit
