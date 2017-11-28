@@ -4,6 +4,7 @@ from collections import defaultdict
 
 from nitro.event import SyscallDirection
 from nitro.libvmi import LibvmiError
+from nitro.listener import ContinuationType
 
 class Backend:
     __slots__ = (
@@ -39,7 +40,12 @@ class Backend:
             try:
                 logging.debug('Processing hook %s - %s',
                               syscall.event.direction.name, hook.__name__)
-                hook(syscall, self)
+                op = hook(syscall, self)
+                if isinstance(op, ContinuationType):
+                    self.listener.set_continuation(op)
+                else:
+                    # Default to continuing
+                    self.listener.set_continuation(ContinuationType.DIRECT)
             # FIXME: There should be a way for OS specific backends to report these
             # except InconsistentMemoryError: #
             #     self.stats['memory_access_error'] += 1

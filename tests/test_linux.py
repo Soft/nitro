@@ -6,6 +6,8 @@ import json
 from layers import VMLayer
 from vmtest_helper import LinuxVMTestHelper
 
+from nitro.listener import ContinuationType
+
 class TestLinux(unittest.TestCase):
     domain_name = "nitro_ubuntu1604"
     test_helper = LinuxVMTestHelper
@@ -21,19 +23,9 @@ class TestLinux(unittest.TestCase):
             nonlocal unlink_done
             process = syscall.process
             if process is not None and process.name == "test_unlink_che":
-                # If we were really careful we could check that the unlink call was for needle
-                # Now we just asume the test binary is not going to call unlink
                 unlink_done = True
-
                 logging.debug("unlink hook for test binary called")
-
-                # This works for me but it of course not enough to fully undo effects of SYSCALL
-                # I think bunch of registers are still messed up after this
-
-                rcx = syscall.event.get_register("rcx")
-                rip = syscall.event.get_register("rip")
-                logging.debug("rcx: %s, rip: %s", hex(rcx), hex(rip))
-                syscall.event.update_register("rip", rcx)
+                return ContinuationType.STEP_OVER
 
         def stat_hook(syscall, backend):
             nonlocal found
