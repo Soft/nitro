@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nitro.backends.linux package &mdash; nitro 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="nitro 0.0.1 documentation" href="index.html"/>
+        <link rel="up" title="nitro.backends package" href="nitro.backends.html"/>
+        <link rel="next" title="nitro.backends.windows package" href="nitro.backends.windows.html"/>
+        <link rel="prev" title="nitro.backends package" href="nitro.backends.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nitro
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Finding Out What Notepad is Doing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Developing Nitro: Testing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="nitro.html">nitro package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nitro.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nitro.backends.html">nitro.backends package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="nitro.backends.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.arguments">nitro.backends.arguments module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.backend">nitro.backends.backend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.factory">nitro.backends.factory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.process">nitro.backends.process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.event">nitro.event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.kvm">nitro.kvm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.libvmi">nitro.libvmi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.listener">nitro.listener module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.nitro">nitro.nitro module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.syscall">nitro.syscall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nitro</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="nitro.html">nitro package</a> &raquo;</li>
+        
+          <li><a href="nitro.backends.html">nitro.backends package</a> &raquo;</li>
+        
+      <li>nitro.backends.linux package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nitro.backends.linux.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nitro-backends-linux-package">
+<h1>nitro.backends.linux package<a class="headerlink" href="#nitro-backends-linux-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nitro.backends.linux.arguments">
+<span id="nitro-backends-linux-arguments-module"></span><h2>nitro.backends.linux.arguments module<a class="headerlink" href="#module-nitro.backends.linux.arguments" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.backends.linux.arguments.LinuxArgumentMap">
+<em class="property">class </em><code class="descclassname">nitro.backends.linux.arguments.</code><code class="descname">LinuxArgumentMap</code><span class="sig-paren">(</span><em>event</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.arguments.LinuxArgumentMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nitro.backends.html#nitro.backends.arguments.ArgumentMap" title="nitro.backends.arguments.ArgumentMap"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.arguments.ArgumentMap</span></code></a></p>
+<p><code class="docutils literal"><span class="pre">LinuxArgumentMap</span></code> provides read and write access to system call arguments.</p>
+<dl class="attribute">
+<dt id="nitro.backends.linux.arguments.LinuxArgumentMap.CONVENTION">
+<code class="descname">CONVENTION</code><em class="property"> = {&lt;SyscallType.syscall: 1&gt;: [(&lt;SyscallArgumentType.register: 0&gt;, 'rdi'), (&lt;SyscallArgumentType.register: 0&gt;, 'rsi'), (&lt;SyscallArgumentType.register: 0&gt;, 'rdx'), (&lt;SyscallArgumentType.register: 0&gt;, 'r10'), (&lt;SyscallArgumentType.register: 0&gt;, 'r8'), (&lt;SyscallArgumentType.register: 0&gt;, 'r9')], &lt;SyscallType.sysenter: 0&gt;: [(&lt;SyscallArgumentType.register: 0&gt;, 'rbx'), (&lt;SyscallArgumentType.register: 0&gt;, 'rcx'), (&lt;SyscallArgumentType.register: 0&gt;, 'rdx'), (&lt;SyscallArgumentType.register: 0&gt;, 'rsi'), (&lt;SyscallArgumentType.register: 0&gt;, 'rdi'), (&lt;SyscallArgumentType.register: 0&gt;, 'rbp')]}</em><a class="headerlink" href="#nitro.backends.linux.arguments.LinuxArgumentMap.CONVENTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.linux.backend">
+<span id="nitro-backends-linux-backend-module"></span><h2>nitro.backends.linux.backend module<a class="headerlink" href="#module-nitro.backends.linux.backend" title="Permalink to this headline">¶</a></h2>
+<p>Backend for extracting information about system calls from Linux guests.</p>
+<dl class="class">
+<dt id="nitro.backends.linux.backend.LinuxBackend">
+<em class="property">class </em><code class="descclassname">nitro.backends.linux.backend.</code><code class="descname">LinuxBackend</code><span class="sig-paren">(</span><em>domain</em>, <em>libvmi</em>, <em>listener</em>, <em>syscall_filtering=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nitro.backends.html#nitro.backends.backend.Backend" title="nitro.backends.backend.Backend"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.backend.Backend</span></code></a></p>
+<p>Extract information about system calls produced by the guest. This backend
+support 64-bit Linux guests.</p>
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.add_syscall_filter">
+<code class="descname">add_syscall_filter</code><span class="sig-paren">(</span><em>syscall_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.add_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.associate_process">
+<code class="descname">associate_process</code><span class="sig-paren">(</span><em>cr3</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.associate_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get <code class="docutils literal"><span class="pre">LinuxProcess</span></code> associated with <code class="docutils literal"><span class="pre">cr3</span></code>
+:params int cr3: cr3 value
+:returns: process associated with <code class="docutils literal"><span class="pre">cr3</span></code>
+:rtype: LinuxProcess</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.build_syscall_name_map">
+<code class="descname">build_syscall_name_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.build_syscall_name_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.define_hook">
+<code class="descname">define_hook</code><span class="sig-paren">(</span><em>name</em>, <em>callback</em>, <em>direction=&lt;SyscallDirection.enter: 0&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.define_hook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.find_syscall_nb">
+<code class="descname">find_syscall_nb</code><span class="sig-paren">(</span><em>syscall_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.find_syscall_nb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.get_syscall_name">
+<code class="descname">get_syscall_name</code><span class="sig-paren">(</span><em>rax</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.get_syscall_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return name of the system call handler associated with <code class="docutils literal"><span class="pre">rax</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rax</strong> (<em>int</em>) – index into system call table.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">system call handler name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.mm_offset">
+<code class="descname">mm_offset</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.mm_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.nb_vcpu">
+<code class="descname">nb_vcpu</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.nb_vcpu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.pgd_offset">
+<code class="descname">pgd_offset</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.pgd_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.process_event">
+<code class="descname">process_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.process_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process <code class="docutils literal"><span class="pre">NitroEvent</span></code> and return a matching <code class="docutils literal"><span class="pre">Systemcall</span></code>. This function
+analyzes system state and, based on it, produces a new <code class="docutils literal"><span class="pre">Systemcall</span></code>
+that contains higher-level information about the system call that is
+being processed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> (<a class="reference internal" href="nitro.html#nitro.event.NitroEvent" title="nitro.event.NitroEvent"><em>NitroEvent</em></a>) – event to be analyzed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">system call based on <code class="docutils literal"><span class="pre">event</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Systemcall</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.remove_syscall_filter">
+<code class="descname">remove_syscall_filter</code><span class="sig-paren">(</span><em>syscall_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.remove_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.sys_call_table_addr">
+<code class="descname">sys_call_table_addr</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.sys_call_table_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.syscall_names">
+<code class="descname">syscall_names</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.syscall_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.syscall_stack">
+<code class="descname">syscall_stack</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.syscall_stack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.backend.LinuxBackend.tasks_offset">
+<code class="descname">tasks_offset</code><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.tasks_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.linux.backend.LinuxBackend.undefine_hook">
+<code class="descname">undefine_hook</code><span class="sig-paren">(</span><em>name</em>, <em>direction=&lt;SyscallDirection.enter: 0&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.LinuxBackend.undefine_hook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nitro.backends.linux.backend.clean_name">
+<code class="descclassname">nitro.backends.linux.backend.</code><code class="descname">clean_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.backend.clean_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.linux.process">
+<span id="nitro-backends-linux-process-module"></span><h2>nitro.backends.linux.process module<a class="headerlink" href="#module-nitro.backends.linux.process" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.backends.linux.process.LinuxProcess">
+<em class="property">class </em><code class="descclassname">nitro.backends.linux.process.</code><code class="descname">LinuxProcess</code><span class="sig-paren">(</span><em>libvmi</em>, <em>cr3</em>, <em>task_struct</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.linux.process.LinuxProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nitro.backends.html#nitro.backends.process.Process" title="nitro.backends.process.Process"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.process.Process</span></code></a></p>
+<p>Class representing a Linux process</p>
+<dl class="attribute">
+<dt id="nitro.backends.linux.process.LinuxProcess.name">
+<code class="descname">name</code><a class="headerlink" href="#nitro.backends.linux.process.LinuxProcess.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the processs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.process.LinuxProcess.pid">
+<code class="descname">pid</code><a class="headerlink" href="#nitro.backends.linux.process.LinuxProcess.pid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proces PID</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.linux.process.LinuxProcess.task_struct">
+<code class="descname">task_struct</code><a class="headerlink" href="#nitro.backends.linux.process.LinuxProcess.task_struct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kernel task_struct for the process</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.linux">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nitro.backends.linux" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nitro.backends.windows.html" class="btn btn-neutral float-right" title="nitro.backends.windows package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nitro.backends.html" class="btn btn-neutral" title="nitro.backends package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

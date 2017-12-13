@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial: Finding Out What Notepad is Doing &mdash; nitro 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="nitro 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Developing Nitro: Testing" href="testing.html"/>
+        <link rel="prev" title="Architecture Overview" href="architecture.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nitro
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial: Finding Out What Notepad is Doing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-a-connection">Getting a Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#letting-the-events-flow">Letting the Events Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-the-data">Understanding the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#looking-for-a-notepad">Looking for a Notepad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Developing Nitro: Testing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nitro.html">nitro package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nitro</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial: Finding Out What Notepad is Doing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-finding-out-what-notepad-is-doing">
+<h1>Tutorial: Finding Out What Notepad is Doing<a class="headerlink" href="#tutorial-finding-out-what-notepad-is-doing" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will use Nitro to monitor Windows Notepad. While this might
+not be super interesting in itself, it demonstrates all the essential techniques
+that will enable you to use Nitro for tackling real-world challenges.</p>
+<div class="section" id="getting-a-connection">
+<h2>Getting a Connection<a class="headerlink" href="#getting-a-connection" title="Permalink to this headline">¶</a></h2>
+<p>The first thing to do is to initialize Nitro and attach it to a virtual machine.
+For the purposes of this tutorial, we expect the VM to be already running but we
+could of course use libvirt APIs for automating setting up the environment.
+Additionally, Nitro obviously has to be in Python’s module search path for any
+of this to work.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nitro.nitro</span> <span class="k">import</span> <span class="n">Nitro</span>
+
+<span class="k">with</span> <span class="n">Nitro</span><span class="p">(</span><span class="s2">&quot;Windows-VM&quot;</span><span class="p">,</span> <span class="n">introspection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">nitro</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nitro</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">set_traps</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, we have imported the <a class="reference internal" href="nitro.html#nitro.nitro.Nitro" title="nitro.nitro.Nitro"><code class="xref py py-class docutils literal"><span class="pre">Nitro</span></code></a> class and used it to connect to a
+libvirt domain named “Windows-VM”. The optional <code class="docutils literal"><span class="pre">introspection</span></code> argument
+indicates that we wish Nitro to create us a suitable analysis back end.</p>
+<p>Inside the <code class="docutils literal"><span class="pre">with</span></code> statement, we enable traps. After the traps have been set,
+we are ready to start listening for low-level <a class="reference internal" href="nitro.html#nitro.event.NitroEvent" title="nitro.event.NitroEvent"><code class="xref py py-class docutils literal"><span class="pre">NitroEvent</span></code></a> events from
+the virtual machine.</p>
+<p>So far, the code doesn’t do anything too interesting as after the traps have
+been set, Nitro exits gracefully as there is nothing more to do.</p>
+</div>
+<div class="section" id="letting-the-events-flow">
+<h2>Letting the Events Flow<a class="headerlink" href="#letting-the-events-flow" title="Permalink to this headline">¶</a></h2>
+<p>Next, lets extend the code to get some events from the target machine. We can
+listen for events using <a class="reference internal" href="nitro.html#nitro.nitro.Nitro" title="nitro.nitro.Nitro"><code class="xref py py-class docutils literal"><span class="pre">Nitro</span></code></a> object’s <a class="reference internal" href="nitro.html#nitro.nitro.Nitro.listen" title="nitro.nitro.Nitro.listen"><code class="xref py py-meth docutils literal"><span class="pre">listen()</span></code></a> method.
+Internally, Nitro will use the <a class="reference internal" href="nitro.html#nitro.listener.Listener" title="nitro.listener.Listener"><code class="xref py py-class docutils literal"><span class="pre">Listener</span></code></a> it initialized for us.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nitro.nitro</span> <span class="k">import</span> <span class="n">Nitro</span>
+
+<span class="k">with</span> <span class="n">Nitro</span><span class="p">(</span><span class="s2">&quot;Windows-VM&quot;</span><span class="p">,</span> <span class="n">introspection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">nitro</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nitro</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">set_traps</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">nitro</span><span class="o">.</span><span class="n">listen</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="nitro.html#nitro.nitro.Nitro.listen" title="nitro.nitro.Nitro.listen"><code class="xref py py-meth docutils literal"><span class="pre">listen()</span></code></a> will give us a stream of <a class="reference internal" href="nitro.html#nitro.event.NitroEvent" title="nitro.event.NitroEvent"><code class="xref py py-class docutils literal"><span class="pre">NitroEvent</span></code></a> events.
+Each event describes a state of the machine when a system call entry or exit
+happened. Here, we simply print a representation of each event received. This
+should quickly print a lot of data about things happening inside the VM:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x33&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x16&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x16&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x18d&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Each event line shows the most important properties of the event and, if we
+wanted, we could access even more information through the <code class="docutils literal"><span class="pre">event</span></code> object.</p>
+</div>
+<div class="section" id="understanding-the-data">
+<h2>Understanding the Data<a class="headerlink" href="#understanding-the-data" title="Permalink to this headline">¶</a></h2>
+<p>While having all this data is certainly interesting, it does little to help us
+in our mission to understand what Windows Notepad is doing while we use it to
+edit text. There is simply too much data with too little useful information for
+practical uses.</p>
+<p>We can remedy the situation by calling in help the analysis back end that Nitro
+helpfully created for us. Using the Windows analysis back end, we can transform
+all the low-level events into something more useful.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nitro.nitro</span> <span class="k">import</span> <span class="n">Nitro</span>
+<span class="kn">from</span> <span class="nn">nitro.libvmi</span> <span class="k">import</span> <span class="n">LibvmiError</span>
+
+<span class="k">with</span> <span class="n">Nitro</span><span class="p">(</span><span class="s2">&quot;Windows-VM&quot;</span><span class="p">,</span> <span class="n">introspection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">nitro</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nitro</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">set_traps</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">nitro</span><span class="o">.</span><span class="n">listen</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">syscall</span> <span class="o">=</span> <span class="n">nitro</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">process_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">LibvmiError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to analyze event :/&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">syscall</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>We now invoke back end’s <a class="reference internal" href="nitro.backends.windows.html#nitro.backends.windows.backend.WindowsBackend.process_event" title="nitro.backends.windows.backend.WindowsBackend.process_event"><code class="xref py py-meth docutils literal"><span class="pre">process_event()</span></code></a> method for each
+incoming event to see what they are about. The method returns us a
+<a class="reference internal" href="nitro.html#nitro.syscall.Syscall" title="nitro.syscall.Syscall"><code class="xref py py-class docutils literal"><span class="pre">Syscall</span></code></a> event with all the associated information. It is worth noting
+that digging around virtual machine’s memory for information about events is a
+potentially challenging task that may result in an error. It is a good practice
+to catch those. Here, if everything went well, we will print the analysis
+result. This should result in something little more understandable.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x11b27000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 02:23:15&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">1476</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">1908</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;mcbuilder.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtCreateFile&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtCreateFile&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x11b27000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x47&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 02:23:15&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">1476</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">1908</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;mcbuilder.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtCreateSection&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtCreateSection&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x11b27000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 02:23:15&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">1476</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">1908</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;mcbuilder.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtCreateSection&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtCreateSection&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x11b27000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x25&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 02:23:15&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">1476</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">1908</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;mcbuilder.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtMapViewOfSection&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtMapViewOfSection&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x11b27000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">mcbuilder.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 02:23:15&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">1476</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">1908</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;mcbuilder.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtMapViewOfSection&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtMapViewOfSection&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x102&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">svchost.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">svchost.exe -k netsvcs&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 01:52:40&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">836</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">452</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;svchost.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtWaitForSingleObject&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtWaitForSingleObject&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x5c&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">svchost.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">svchost.exe -k netsvcs&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 01:52:40&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">836</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">452</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;svchost.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtPowerInformation&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtPowerInformation&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">svchost.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">svchost.exe -k netsvcs&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 01:52:40&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">836</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">452</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;svchost.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtPowerInformation&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtPowerInformation&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;enter&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x5c&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">svchost.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">svchost.exe -k netsvcs&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 01:52:40&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">836</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">452</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;svchost.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtPowerInformation&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtPowerInformation&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cr3&#39;</span><span class="p">:</span> <span class="s1">&#39;0x493bb000&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;syscall&#39;</span><span class="p">,</span> <span class="s1">&#39;direction&#39;</span><span class="p">:</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;vcpu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;rax&#39;</span><span class="p">:</span> <span class="s1">&#39;0x0&#39;</span><span class="p">},</span> <span class="s1">&#39;process&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Device</span><span class="se">\\</span><span class="s1">HarddiskVolume1</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">svchost.exe&#39;</span><span class="p">,</span> <span class="s1">&#39;command_line&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">system32</span><span class="se">\\</span><span class="s1">svchost.exe -k netsvcs&#39;</span><span class="p">,</span> <span class="s1">&#39;iswow64&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;create_time&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-10-05 01:52:40&#39;</span><span class="p">,</span> <span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="mi">836</span><span class="p">,</span> <span class="s1">&#39;parent_pid&#39;</span><span class="p">:</span> <span class="mi">452</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;svchost.exe&#39;</span><span class="p">},</span> <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="s1">&#39;nt!NtPowerInformation&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NtPowerInformation&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We can see that each event has been coupled with information about the process
+that caused it. We are already getting pretty close to our goal!</p>
+</div>
+<div class="section" id="looking-for-a-notepad">
+<h2>Looking for a Notepad<a class="headerlink" href="#looking-for-a-notepad" title="Permalink to this headline">¶</a></h2>
+<p>Now we have everything we need to spot the bits of data that interest us. In
+this case, we are interested in what Windows Notepad is doing when we open it.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nitro.nitro</span> <span class="k">import</span> <span class="n">Nitro</span>
+<span class="kn">from</span> <span class="nn">nitro.libvmi</span> <span class="k">import</span> <span class="n">LibvmiError</span>
+
+<span class="k">with</span> <span class="n">Nitro</span><span class="p">(</span><span class="s2">&quot;Windows-VM&quot;</span><span class="p">,</span> <span class="n">introspection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">nitro</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nitro</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">set_traps</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">nitro</span><span class="o">.</span><span class="n">listen</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">syscall</span> <span class="o">=</span> <span class="n">nitro</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">process_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">LibvmiError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to analyze event :/&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">syscall</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;notepad.exe&quot;</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">syscall</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>To find out Notepad related events we simply inspect the process property
+associated with the event.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="testing.html" class="btn btn-neutral float-right" title="Developing Nitro: Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="architecture.html" class="btn btn-neutral" title="Architecture Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

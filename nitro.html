@@ -1,0 +1,1401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nitro package &mdash; nitro 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="nitro 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="nitro.backends package" href="nitro.backends.html"/>
+        <link rel="prev" title="Developing Nitro: Testing" href="testing.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nitro
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Finding Out What Notepad is Doing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Developing Nitro: Testing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nitro package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nitro.backends.html">nitro.backends package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro.event">nitro.event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro.kvm">nitro.kvm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro.libvmi">nitro.libvmi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro.listener">nitro.listener module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro.nitro">nitro.nitro module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro.syscall">nitro.syscall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nitro">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nitro</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>nitro package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nitro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nitro-package">
+<h1>nitro package<a class="headerlink" href="#nitro-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nitro.backends.html">nitro.backends package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nitro.backends.linux.html">nitro.backends.linux package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.linux.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.linux.html#module-nitro.backends.linux.arguments">nitro.backends.linux.arguments module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.linux.html#module-nitro.backends.linux.backend">nitro.backends.linux.backend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.linux.html#module-nitro.backends.linux.process">nitro.backends.linux.process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.linux.html#module-nitro.backends.linux">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="nitro.backends.windows.html">nitro.backends.windows package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.windows.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.windows.html#module-nitro.backends.windows.arguments">nitro.backends.windows.arguments module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.windows.html#module-nitro.backends.windows.backend">nitro.backends.windows.backend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.windows.html#module-nitro.backends.windows.process">nitro.backends.windows.process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.windows.html#module-nitro.backends.windows.types">nitro.backends.windows.types module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.windows.html#module-nitro.backends.windows">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.arguments">nitro.backends.arguments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.backend">nitro.backends.backend module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.factory">nitro.backends.factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.process">nitro.backends.process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.backends.html#module-nitro.backends">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nitro.event">
+<span id="nitro-event-module"></span><h2>nitro.event module<a class="headerlink" href="#module-nitro.event" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.event.NitroEvent">
+<em class="property">class </em><code class="descclassname">nitro.event.</code><code class="descname">NitroEvent</code><span class="sig-paren">(</span><em>nitro_event_str</em>, <em>vcpu_io</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.event.NitroEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p><code class="docutils literal"><span class="pre">NitroEvent</span></code> represents a low-level system event. It contains information
+about the state of the machine when the system was stopped.</p>
+<dl class="method">
+<dt id="nitro.event.NitroEvent.as_dict">
+<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.event.NitroEvent.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dict representation of the event</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.direction">
+<code class="descname">direction</code><a class="headerlink" href="#nitro.event.NitroEvent.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event direction. Are we entering or exiting a system call</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.event.NitroEvent.get_register">
+<code class="descname">get_register</code><span class="sig-paren">(</span><em>register</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.event.NitroEvent.get_register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get register value from the event</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.regs">
+<code class="descname">regs</code><a class="headerlink" href="#nitro.event.NitroEvent.regs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.sregs">
+<code class="descname">sregs</code><a class="headerlink" href="#nitro.event.NitroEvent.sregs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Special register state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.time">
+<code class="descname">time</code><a class="headerlink" href="#nitro.event.NitroEvent.time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.type">
+<code class="descname">type</code><a class="headerlink" href="#nitro.event.NitroEvent.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>System call mechanism used</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.event.NitroEvent.update_register">
+<code class="descname">update_register</code><span class="sig-paren">(</span><em>register</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.event.NitroEvent.update_register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change individual register’s values</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.vcpu_io">
+<code class="descname">vcpu_io</code><a class="headerlink" href="#nitro.event.NitroEvent.vcpu_io" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle to the VCPU where the event originated</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.NitroEvent.vcpu_nb">
+<code class="descname">vcpu_nb</code><a class="headerlink" href="#nitro.event.NitroEvent.vcpu_nb" title="Permalink to this definition">¶</a></dt>
+<dd><p>VCPU number</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.event.SyscallDirection">
+<em class="property">class </em><code class="descclassname">nitro.event.</code><code class="descname">SyscallDirection</code><a class="headerlink" href="#nitro.event.SyscallDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<p>System call direction</p>
+<dl class="attribute">
+<dt id="nitro.event.SyscallDirection.enter">
+<code class="descname">enter</code><em class="property"> = 0</em><a class="headerlink" href="#nitro.event.SyscallDirection.enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.SyscallDirection.exit">
+<code class="descname">exit</code><em class="property"> = 1</em><a class="headerlink" href="#nitro.event.SyscallDirection.exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.event.SyscallType">
+<em class="property">class </em><code class="descclassname">nitro.event.</code><code class="descname">SyscallType</code><a class="headerlink" href="#nitro.event.SyscallType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<p>System call mechanism</p>
+<dl class="attribute">
+<dt id="nitro.event.SyscallType.syscall">
+<code class="descname">syscall</code><em class="property"> = 1</em><a class="headerlink" href="#nitro.event.SyscallType.syscall" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.event.SyscallType.sysenter">
+<code class="descname">sysenter</code><em class="property"> = 0</em><a class="headerlink" href="#nitro.event.SyscallType.sysenter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.kvm">
+<span id="nitro-kvm-module"></span><h2>nitro.kvm module<a class="headerlink" href="#module-nitro.kvm" title="Permalink to this headline">¶</a></h2>
+<p>Low-level interface to KVM facilities. This module enables the use of
+Nitro’s enhanced KVM capabilities.</p>
+<dl class="class">
+<dt id="nitro.kvm.DTable">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">DTable</code><a class="headerlink" href="#nitro.kvm.DTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="nitro.kvm.DTable.base">
+<code class="descname">base</code><a class="headerlink" href="#nitro.kvm.DTable.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.DTable.limit">
+<code class="descname">limit</code><a class="headerlink" href="#nitro.kvm.DTable.limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.DTable.padding">
+<code class="descname">padding</code><a class="headerlink" href="#nitro.kvm.DTable.padding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.IOCTL">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">IOCTL</code><a class="headerlink" href="#nitro.kvm.IOCTL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class for making IOCTL calls</p>
+<dl class="attribute">
+<dt id="nitro.kvm.IOCTL.LIBC_6">
+<code class="descname">LIBC_6</code><em class="property"> = 'libc.so.6'</em><a class="headerlink" href="#nitro.kvm.IOCTL.LIBC_6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.IOCTL.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.IOCTL.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.IOCTL.fd">
+<code class="descname">fd</code><a class="headerlink" href="#nitro.kvm.IOCTL.fd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.IOCTL.libc">
+<code class="descname">libc</code><a class="headerlink" href="#nitro.kvm.IOCTL.libc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.IOCTL.make_ioctl">
+<code class="descname">make_ioctl</code><span class="sig-paren">(</span><em>request</em>, <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.IOCTL.make_ioctl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.KVM">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">KVM</code><a class="headerlink" href="#nitro.kvm.KVM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.kvm.IOCTL" title="nitro.kvm.IOCTL"><code class="xref py py-class docutils literal"><span class="pre">nitro.kvm.IOCTL</span></code></a></p>
+<p>Class for connecting to the KVM and attaching to virtual machines.</p>
+<dl class="attribute">
+<dt id="nitro.kvm.KVM.KVM_NITRO_ATTACH_VM">
+<code class="descname">KVM_NITRO_ATTACH_VM</code><em class="property"> = &lt;MagicMock name='mock.IOW()' id='47824065995104'&gt;</em><a class="headerlink" href="#nitro.kvm.KVM.KVM_NITRO_ATTACH_VM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.KVM.KVM_NODE">
+<code class="descname">KVM_NODE</code><em class="property"> = '/dev/kvm'</em><a class="headerlink" href="#nitro.kvm.KVM.KVM_NODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.KVM.attach_vm">
+<code class="descname">attach_vm</code><span class="sig-paren">(</span><em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.KVM.attach_vm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach to KVM virtual machine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pid</strong> (<em>int</em>) – pid of the Qemu process to attach to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">RuntimeError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.KVM.kvm_file">
+<code class="descname">kvm_file</code><a class="headerlink" href="#nitro.kvm.KVM.kvm_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.NitroEventStr">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">NitroEventStr</code><a class="headerlink" href="#nitro.kvm.NitroEventStr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="nitro.kvm.NitroEventStr.direction">
+<code class="descname">direction</code><a class="headerlink" href="#nitro.kvm.NitroEventStr.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.NitroEventStr.present">
+<code class="descname">present</code><a class="headerlink" href="#nitro.kvm.NitroEventStr.present" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.NitroEventStr.regs">
+<code class="descname">regs</code><a class="headerlink" href="#nitro.kvm.NitroEventStr.regs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.NitroEventStr.sregs">
+<code class="descname">sregs</code><a class="headerlink" href="#nitro.kvm.NitroEventStr.sregs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.NitroEventStr.type">
+<code class="descname">type</code><a class="headerlink" href="#nitro.kvm.NitroEventStr.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.NitroVCPUs">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">NitroVCPUs</code><a class="headerlink" href="#nitro.kvm.NitroVCPUs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="nitro.kvm.NitroVCPUs.fds">
+<code class="descname">fds</code><a class="headerlink" href="#nitro.kvm.NitroVCPUs.fds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.NitroVCPUs.ids">
+<code class="descname">ids</code><a class="headerlink" href="#nitro.kvm.NitroVCPUs.ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.NitroVCPUs.num_vcpus">
+<code class="descname">num_vcpus</code><a class="headerlink" href="#nitro.kvm.NitroVCPUs.num_vcpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.Regs">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">Regs</code><a class="headerlink" href="#nitro.kvm.Regs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r10">
+<code class="descname">r10</code><a class="headerlink" href="#nitro.kvm.Regs.r10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r11">
+<code class="descname">r11</code><a class="headerlink" href="#nitro.kvm.Regs.r11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r12">
+<code class="descname">r12</code><a class="headerlink" href="#nitro.kvm.Regs.r12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r13">
+<code class="descname">r13</code><a class="headerlink" href="#nitro.kvm.Regs.r13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r14">
+<code class="descname">r14</code><a class="headerlink" href="#nitro.kvm.Regs.r14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r15">
+<code class="descname">r15</code><a class="headerlink" href="#nitro.kvm.Regs.r15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r8">
+<code class="descname">r8</code><a class="headerlink" href="#nitro.kvm.Regs.r8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.r9">
+<code class="descname">r9</code><a class="headerlink" href="#nitro.kvm.Regs.r9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rax">
+<code class="descname">rax</code><a class="headerlink" href="#nitro.kvm.Regs.rax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rbp">
+<code class="descname">rbp</code><a class="headerlink" href="#nitro.kvm.Regs.rbp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rbx">
+<code class="descname">rbx</code><a class="headerlink" href="#nitro.kvm.Regs.rbx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rcx">
+<code class="descname">rcx</code><a class="headerlink" href="#nitro.kvm.Regs.rcx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rdi">
+<code class="descname">rdi</code><a class="headerlink" href="#nitro.kvm.Regs.rdi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rdx">
+<code class="descname">rdx</code><a class="headerlink" href="#nitro.kvm.Regs.rdx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rflags">
+<code class="descname">rflags</code><a class="headerlink" href="#nitro.kvm.Regs.rflags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rip">
+<code class="descname">rip</code><a class="headerlink" href="#nitro.kvm.Regs.rip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rsi">
+<code class="descname">rsi</code><a class="headerlink" href="#nitro.kvm.Regs.rsi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Regs.rsp">
+<code class="descname">rsp</code><a class="headerlink" href="#nitro.kvm.Regs.rsp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.SRegs">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">SRegs</code><a class="headerlink" href="#nitro.kvm.SRegs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.apic_base">
+<code class="descname">apic_base</code><a class="headerlink" href="#nitro.kvm.SRegs.apic_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.cr0">
+<code class="descname">cr0</code><a class="headerlink" href="#nitro.kvm.SRegs.cr0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.cr2">
+<code class="descname">cr2</code><a class="headerlink" href="#nitro.kvm.SRegs.cr2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.cr3">
+<code class="descname">cr3</code><a class="headerlink" href="#nitro.kvm.SRegs.cr3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.cr4">
+<code class="descname">cr4</code><a class="headerlink" href="#nitro.kvm.SRegs.cr4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.cr8">
+<code class="descname">cr8</code><a class="headerlink" href="#nitro.kvm.SRegs.cr8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.cs">
+<code class="descname">cs</code><a class="headerlink" href="#nitro.kvm.SRegs.cs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.ds">
+<code class="descname">ds</code><a class="headerlink" href="#nitro.kvm.SRegs.ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.efer">
+<code class="descname">efer</code><a class="headerlink" href="#nitro.kvm.SRegs.efer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.es">
+<code class="descname">es</code><a class="headerlink" href="#nitro.kvm.SRegs.es" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.fs">
+<code class="descname">fs</code><a class="headerlink" href="#nitro.kvm.SRegs.fs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.gdt">
+<code class="descname">gdt</code><a class="headerlink" href="#nitro.kvm.SRegs.gdt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.gs">
+<code class="descname">gs</code><a class="headerlink" href="#nitro.kvm.SRegs.gs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.idt">
+<code class="descname">idt</code><a class="headerlink" href="#nitro.kvm.SRegs.idt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.interrupt_bitmap">
+<code class="descname">interrupt_bitmap</code><a class="headerlink" href="#nitro.kvm.SRegs.interrupt_bitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.ldt">
+<code class="descname">ldt</code><a class="headerlink" href="#nitro.kvm.SRegs.ldt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.ss">
+<code class="descname">ss</code><a class="headerlink" href="#nitro.kvm.SRegs.ss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.SRegs.tr">
+<code class="descname">tr</code><a class="headerlink" href="#nitro.kvm.SRegs.tr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.Segment">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">Segment</code><a class="headerlink" href="#nitro.kvm.Segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.avl">
+<code class="descname">avl</code><a class="headerlink" href="#nitro.kvm.Segment.avl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.base">
+<code class="descname">base</code><a class="headerlink" href="#nitro.kvm.Segment.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.db">
+<code class="descname">db</code><a class="headerlink" href="#nitro.kvm.Segment.db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.dpl">
+<code class="descname">dpl</code><a class="headerlink" href="#nitro.kvm.Segment.dpl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.g">
+<code class="descname">g</code><a class="headerlink" href="#nitro.kvm.Segment.g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.l">
+<code class="descname">l</code><a class="headerlink" href="#nitro.kvm.Segment.l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.limit">
+<code class="descname">limit</code><a class="headerlink" href="#nitro.kvm.Segment.limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.padding">
+<code class="descname">padding</code><a class="headerlink" href="#nitro.kvm.Segment.padding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.present">
+<code class="descname">present</code><a class="headerlink" href="#nitro.kvm.Segment.present" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.s">
+<code class="descname">s</code><a class="headerlink" href="#nitro.kvm.Segment.s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.selector">
+<code class="descname">selector</code><a class="headerlink" href="#nitro.kvm.Segment.selector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.type">
+<code class="descname">type</code><a class="headerlink" href="#nitro.kvm.Segment.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.Segment.unusable">
+<code class="descname">unusable</code><a class="headerlink" href="#nitro.kvm.Segment.unusable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.VCPU">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">VCPU</code><span class="sig-paren">(</span><em>vcpu_nb</em>, <em>vcpu_fd</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.kvm.IOCTL" title="nitro.kvm.IOCTL"><code class="xref py py-class docutils literal"><span class="pre">nitro.kvm.IOCTL</span></code></a></p>
+<p>Class that allows controlling and inspecting the state of an individual virtual CPU.</p>
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.KVM_NITRO_CONTINUE">
+<code class="descname">KVM_NITRO_CONTINUE</code><em class="property"> = &lt;MagicMock name='mock.IO()' id='47824066019680'&gt;</em><a class="headerlink" href="#nitro.kvm.VCPU.KVM_NITRO_CONTINUE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request to continue</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.KVM_NITRO_GET_EVENT">
+<code class="descname">KVM_NITRO_GET_EVENT</code><em class="property"> = &lt;MagicMock name='mock.IOR()' id='47824066015584'&gt;</em><a class="headerlink" href="#nitro.kvm.VCPU.KVM_NITRO_GET_EVENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request for retrieving event</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.KVM_NITRO_GET_REGS">
+<code class="descname">KVM_NITRO_GET_REGS</code><em class="property"> = &lt;MagicMock name='mock.IOR()' id='47824066015584'&gt;</em><a class="headerlink" href="#nitro.kvm.VCPU.KVM_NITRO_GET_REGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request to get register state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.KVM_NITRO_GET_SREGS">
+<code class="descname">KVM_NITRO_GET_SREGS</code><em class="property"> = &lt;MagicMock name='mock.IOR()' id='47824066015584'&gt;</em><a class="headerlink" href="#nitro.kvm.VCPU.KVM_NITRO_GET_SREGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request to get special registers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.KVM_NITRO_SET_REGS">
+<code class="descname">KVM_NITRO_SET_REGS</code><em class="property"> = &lt;MagicMock name='mock.IOW()' id='47824065995104'&gt;</em><a class="headerlink" href="#nitro.kvm.VCPU.KVM_NITRO_SET_REGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request to set register state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.KVM_NITRO_SET_SREGS">
+<code class="descname">KVM_NITRO_SET_SREGS</code><em class="property"> = &lt;MagicMock name='mock.IOW()' id='47824065995104'&gt;</em><a class="headerlink" href="#nitro.kvm.VCPU.KVM_NITRO_SET_SREGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request to set special registers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VCPU.continue_vm">
+<code class="descname">continue_vm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU.continue_vm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continue virtual machine execution</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VCPU.get_event">
+<code class="descname">get_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU.get_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve event from the virtual machine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#nitro.kvm.NitroEventStr" title="nitro.kvm.NitroEventStr">NitroEventStr</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VCPU.get_regs">
+<code class="descname">get_regs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU.get_regs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get registers from the virtual machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#nitro.kvm.Regs" title="nitro.kvm.Regs">Regs</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VCPU.get_sregs">
+<code class="descname">get_sregs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU.get_sregs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get special registers from the virtual machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#nitro.kvm.SRegs" title="nitro.kvm.SRegs">SRegs</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VCPU.set_regs">
+<code class="descname">set_regs</code><span class="sig-paren">(</span><em>regs</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU.set_regs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set registers for the virtual machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>regs</strong> (<a class="reference internal" href="#nitro.kvm.Regs" title="nitro.kvm.Regs"><em>Regs</em></a>) – Values for registers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VCPU.set_sregs">
+<code class="descname">set_sregs</code><span class="sig-paren">(</span><em>sregs</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VCPU.set_sregs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set special registers for the virtual machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sregs</strong> (<a class="reference internal" href="#nitro.kvm.SRegs" title="nitro.kvm.SRegs"><em>SRegs</em></a>) – Values for special registers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VCPU.vcpu_nb">
+<code class="descname">vcpu_nb</code><a class="headerlink" href="#nitro.kvm.VCPU.vcpu_nb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.kvm.VM">
+<em class="property">class </em><code class="descclassname">nitro.kvm.</code><code class="descname">VM</code><span class="sig-paren">(</span><em>vm_fd</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.kvm.IOCTL" title="nitro.kvm.IOCTL"><code class="xref py py-class docutils literal"><span class="pre">nitro.kvm.IOCTL</span></code></a></p>
+<p>Class that allows low-level control of KVM virtual machines.</p>
+<p>VM makes it possible to attach to machine’s virtual CPUs and add system call
+filters.</p>
+<dl class="attribute">
+<dt id="nitro.kvm.VM.KVM_NITRO_ADD_SYSCALL_FILTER">
+<code class="descname">KVM_NITRO_ADD_SYSCALL_FILTER</code><em class="property"> = &lt;MagicMock name='mock.IOR()' id='47824066015584'&gt;</em><a class="headerlink" href="#nitro.kvm.VM.KVM_NITRO_ADD_SYSCALL_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request for adding system call filter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VM.KVM_NITRO_ATTACH_VCPUS">
+<code class="descname">KVM_NITRO_ATTACH_VCPUS</code><em class="property"> = &lt;MagicMock name='mock.IOR()' id='47824066015584'&gt;</em><a class="headerlink" href="#nitro.kvm.VM.KVM_NITRO_ATTACH_VCPUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reguest for attaching to a virtual CPU</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VM.KVM_NITRO_REMOVE_SYSCALL_FILTER">
+<code class="descname">KVM_NITRO_REMOVE_SYSCALL_FILTER</code><em class="property"> = &lt;MagicMock name='mock.IOR()' id='47824066015584'&gt;</em><a class="headerlink" href="#nitro.kvm.VM.KVM_NITRO_REMOVE_SYSCALL_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request for removing system call filter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VM.KVM_NITRO_SET_SYSCALL_TRAP">
+<code class="descname">KVM_NITRO_SET_SYSCALL_TRAP</code><em class="property"> = &lt;MagicMock name='mock.IOW()' id='47824065995104'&gt;</em><a class="headerlink" href="#nitro.kvm.VM.KVM_NITRO_SET_SYSCALL_TRAP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request for setting system call trap</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VM.add_syscall_filter">
+<code class="descname">add_syscall_filter</code><span class="sig-paren">(</span><em>syscall_nb</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VM.add_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VM.attach_vcpus">
+<code class="descname">attach_vcpus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VM.attach_vcpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach to virtual CPUs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">List of VCPUs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VM.remove_syscall_filter">
+<code class="descname">remove_syscall_filter</code><span class="sig-paren">(</span><em>syscall_nb</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VM.remove_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.kvm.VM.set_syscall_trap">
+<code class="descname">set_syscall_trap</code><span class="sig-paren">(</span><em>enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.kvm.VM.set_syscall_trap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.kvm.VM.vcpus_struct">
+<code class="descname">vcpus_struct</code><a class="headerlink" href="#nitro.kvm.VM.vcpus_struct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.libvmi">
+<span id="nitro-libvmi-module"></span><h2>nitro.libvmi module<a class="headerlink" href="#module-nitro.libvmi" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.libvmi.Libvmi">
+<em class="property">class </em><code class="descclassname">nitro.libvmi.</code><code class="descname">Libvmi</code><span class="sig-paren">(</span><em>vm_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.destroy">
+<code class="descname">destroy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.destroy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.Libvmi.failures">
+<code class="descname">failures</code><a class="headerlink" href="#nitro.libvmi.Libvmi.failures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.get_offset">
+<code class="descname">get_offset</code><span class="sig-paren">(</span><em>offset_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.get_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.get_ostype">
+<code class="descname">get_ostype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.get_ostype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.Libvmi.libvmi">
+<code class="descname">libvmi</code><a class="headerlink" href="#nitro.libvmi.Libvmi.libvmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.Libvmi.opaque_vmi">
+<code class="descname">opaque_vmi</code><a class="headerlink" href="#nitro.libvmi.Libvmi.opaque_vmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.pidcache_flush">
+<code class="descname">pidcache_flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.pidcache_flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.read_32">
+<code class="descname">read_32</code><span class="sig-paren">(</span><em>vaddr</em>, <em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.read_32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.read_addr_ksym">
+<code class="descname">read_addr_ksym</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.read_addr_ksym" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.read_addr_va">
+<code class="descname">read_addr_va</code><span class="sig-paren">(</span><em>vaddr</em>, <em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.read_addr_va" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.read_str_va">
+<code class="descname">read_str_va</code><span class="sig-paren">(</span><em>vaddr</em>, <em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.read_str_va" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.read_va">
+<code class="descname">read_va</code><span class="sig-paren">(</span><em>vaddr</em>, <em>pid</em>, <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.read_va" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.rvacache_flush">
+<code class="descname">rvacache_flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.rvacache_flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.Libvmi.stats">
+<code class="descname">stats</code><a class="headerlink" href="#nitro.libvmi.Libvmi.stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.symcache_flush">
+<code class="descname">symcache_flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.symcache_flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.translate_ksym2v">
+<code class="descname">translate_ksym2v</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.translate_ksym2v" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.translate_kv2p">
+<code class="descname">translate_kv2p</code><span class="sig-paren">(</span><em>vaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.translate_kv2p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.translate_v2ksym">
+<code class="descname">translate_v2ksym</code><span class="sig-paren">(</span><em>vaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.translate_v2ksym" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.v2pcache_flush">
+<code class="descname">v2pcache_flush</code><span class="sig-paren">(</span><em>dtb=0</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.v2pcache_flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.Libvmi.vmi">
+<code class="descname">vmi</code><a class="headerlink" href="#nitro.libvmi.Libvmi.vmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.libvmi.Libvmi.write_va">
+<code class="descname">write_va</code><span class="sig-paren">(</span><em>vaddr</em>, <em>pid</em>, <em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.libvmi.Libvmi.write_va" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="nitro.libvmi.LibvmiError">
+<em class="property">exception </em><code class="descclassname">nitro.libvmi.</code><code class="descname">LibvmiError</code><a class="headerlink" href="#nitro.libvmi.LibvmiError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.libvmi.VMIOS">
+<em class="property">class </em><code class="descclassname">nitro.libvmi.</code><code class="descname">VMIOS</code><a class="headerlink" href="#nitro.libvmi.VMIOS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<dl class="attribute">
+<dt id="nitro.libvmi.VMIOS.LINUX">
+<code class="descname">LINUX</code><em class="property"> = 1</em><a class="headerlink" href="#nitro.libvmi.VMIOS.LINUX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.VMIOS.UNKNOWN">
+<code class="descname">UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#nitro.libvmi.VMIOS.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.libvmi.VMIOS.WINDOWS">
+<code class="descname">WINDOWS</code><em class="property"> = 2</em><a class="headerlink" href="#nitro.libvmi.VMIOS.WINDOWS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.listener">
+<span id="nitro-listener-module"></span><h2>nitro.listener module<a class="headerlink" href="#module-nitro.listener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.listener.Listener">
+<em class="property">class </em><code class="descclassname">nitro.listener.</code><code class="descname">Listener</code><span class="sig-paren">(</span><em>domain</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class for listening to events from a virtual machine.</p>
+<dl class="method">
+<dt id="nitro.listener.Listener.add_syscall_filter">
+<code class="descname">add_syscall_filter</code><span class="sig-paren">(</span><em>syscall_nb</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.add_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add system call filter to a virtual machine</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.current_cont_event">
+<code class="descname">current_cont_event</code><a class="headerlink" href="#nitro.listener.Listener.current_cont_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.domain">
+<code class="descname">domain</code><a class="headerlink" href="#nitro.listener.Listener.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Libvirt domain that the Listener is monitoring</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.futures">
+<code class="descname">futures</code><a class="headerlink" href="#nitro.listener.Listener.futures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.kvm_io">
+<code class="descname">kvm_io</code><a class="headerlink" href="#nitro.listener.Listener.kvm_io" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.listener.Listener.listen">
+<code class="descname">listen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.listen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator yielding NitroEvents from the virtual machine</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.listener.Listener.listen_vcpu">
+<code class="descname">listen_vcpu</code><span class="sig-paren">(</span><em>vcpu_io</em>, <em>queue</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.listen_vcpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Listen to an individual virtual CPU</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.pid">
+<code class="descname">pid</code><a class="headerlink" href="#nitro.listener.Listener.pid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pid of the QEMU instance that is being monitored</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.queue">
+<code class="descname">queue</code><a class="headerlink" href="#nitro.listener.Listener.queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.listener.Listener.remove_syscall_filter">
+<code class="descname">remove_syscall_filter</code><span class="sig-paren">(</span><em>syscall_nb</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.remove_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove system call filter form a virtual machine</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.listener.Listener.set_traps">
+<code class="descname">set_traps</code><span class="sig-paren">(</span><em>enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.set_traps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.listener.Listener.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop listening for system calls</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.listener.Listener.stop_listen">
+<code class="descname">stop_listen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.Listener.stop_listen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop listening for events</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.stop_request">
+<code class="descname">stop_request</code><a class="headerlink" href="#nitro.listener.Listener.stop_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.vcpus_io">
+<code class="descname">vcpus_io</code><a class="headerlink" href="#nitro.listener.Listener.vcpus_io" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.listener.Listener.vm_io">
+<code class="descname">vm_io</code><a class="headerlink" href="#nitro.listener.Listener.vm_io" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="nitro.listener.QEMUNotFoundError">
+<em class="property">exception </em><code class="descclassname">nitro.listener.</code><code class="descname">QEMUNotFoundError</code><a class="headerlink" href="#nitro.listener.QEMUNotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nitro.listener.find_qemu_pid">
+<code class="descclassname">nitro.listener.</code><code class="descname">find_qemu_pid</code><span class="sig-paren">(</span><em>vm_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.listener.find_qemu_pid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find QEMU’s PID that is associated with a given virtual machine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vm_name</strong> (<em>str</em>) – libvirt domain name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.nitro">
+<span id="nitro-nitro-module"></span><h2>nitro.nitro module<a class="headerlink" href="#module-nitro.nitro" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.nitro.Nitro">
+<em class="property">class </em><code class="descclassname">nitro.nitro.</code><code class="descname">Nitro</code><span class="sig-paren">(</span><em>domain</em>, <em>introspection=True</em>, <em>syscall_filtering=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.nitro.Nitro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="nitro.nitro.Nitro.listen">
+<code class="descname">listen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.nitro.Nitro.listen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.nitro.Nitro.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.nitro.Nitro.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.syscall">
+<span id="nitro-syscall-module"></span><h2>nitro.syscall module<a class="headerlink" href="#module-nitro.syscall" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.syscall.Syscall">
+<em class="property">class </em><code class="descclassname">nitro.syscall.</code><code class="descname">Syscall</code><span class="sig-paren">(</span><em>event</em>, <em>full_name</em>, <em>name</em>, <em>process</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.syscall.Syscall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class representing system call events.</p>
+<p>In contrast to NitroEvent events, Syscall class offers a higher-level view
+of what is happening inside the virtual machine. The class enables access to
+information about the process that created the event and makes it possible
+to access call’s arguments.</p>
+<dl class="attribute">
+<dt id="nitro.syscall.Syscall.args">
+<code class="descname">args</code><a class="headerlink" href="#nitro.syscall.Syscall.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arguments passed to the call</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nitro.syscall.Syscall.as_dict">
+<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.syscall.Syscall.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a dict representation of the system call event.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.syscall.Syscall.event">
+<code class="descname">event</code><a class="headerlink" href="#nitro.syscall.Syscall.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associated low-level NitroEvent</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.syscall.Syscall.full_name">
+<code class="descname">full_name</code><a class="headerlink" href="#nitro.syscall.Syscall.full_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Full name of the systme call handler (eg. SyS_write)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.syscall.Syscall.hook">
+<code class="descname">hook</code><a class="headerlink" href="#nitro.syscall.Syscall.hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook associated with the event</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.syscall.Syscall.name">
+<code class="descname">name</code><a class="headerlink" href="#nitro.syscall.Syscall.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Short “cleaned up” name of the system call handler (eg. write)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.syscall.Syscall.process">
+<code class="descname">process</code><a class="headerlink" href="#nitro.syscall.Syscall.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process that produced the event</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nitro" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nitro.backends.html" class="btn btn-neutral float-right" title="nitro.backends package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="testing.html" class="btn btn-neutral" title="Developing Nitro: Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

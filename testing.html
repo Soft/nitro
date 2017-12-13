@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developing Nitro: Testing &mdash; nitro 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="nitro 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="nitro package" href="nitro.html"/>
+        <link rel="prev" title="Tutorial: Finding Out What Notepad is Doing" href="tutorial.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nitro
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Finding Out What Notepad is Doing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing Nitro: Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unit-tests">Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-tests">Integration Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-testing-vm">Creating a Testing VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-tests">Running the Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nitro.html">nitro package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nitro</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Developing Nitro: Testing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/testing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developing-nitro-testing">
+<h1>Developing Nitro: Testing<a class="headerlink" href="#developing-nitro-testing" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we take a look at how Nitro is tested and what is required for
+running the tests. Testing is essential for ensuring the quality of Nitro and
+for protecting us from accidental regression.</p>
+<div class="section" id="unit-tests">
+<h2>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>As a project, Nitro is highly dependent on multiple external components like the
+customized version of the Linux kernel and the extended QEMU virtual machine
+platform. While all this is necessary, it makes testing the project a bit more
+challenging than the average Python module.</p>
+<p>Unit tests try to break down this complexity by concentrating on individual
+components and features of them. We replace the real interfaces and dependencies
+with <a class="reference external" href="https://en.wikipedia.org/wiki/Mock_object">mocked</a> impostors to remove
+the need for complex outside dependencies and to make the tests more
+deterministic. This limits the kinds of tests we can create but is ideal for
+verifying the correctness of core logic.</p>
+<p>Because of the self-contained nature of unit tests, running the test suite is
+simple. The unit test suite is located in <code class="docutils literal"><span class="pre">tests/unittests</span></code> directory and the
+tests can be run by simply invoking the <code class="docutils literal"><span class="pre">nose2</span></code> test runner there.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>tester@kvm-vmi ~/projects/nitro/tests/unittests $ nose2 --verbose
+test_associate_process (test_linux.TestLinux)
+Test process association. ... ok
+test_backend_creation (test_linux.TestLinux)
+Check that LinuxBackend can be created. ... ok
+test_check_caches_flushed (test_linux.TestLinux)
+Check that libvmi caches are flushed. ... ok
+test_clean_name (test_linux.TestLinux)
+Test that system call handler names are properly cleaned. ... ok
+test_process_event (test_linux.TestLinux)
+Test that the event handler returns a syscall object with somewhat sensible content ... ok
+test_syscall_name (test_linux.TestLinux)
+Check that syscall names can be extracted from system call table. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.007s
+
+OK
+</pre></div>
+</div>
+<p>Because of the lax requirements for the testing environment, Nitro’s unit tests
+are ideal for running in an automated fashion as a part of a continuous
+integration pipeline.</p>
+</div>
+<div class="section" id="integration-tests">
+<h2>Integration Tests<a class="headerlink" href="#integration-tests" title="Permalink to this headline">¶</a></h2>
+<p>While unit tests are useful, it is often difficult to test how the system
+operates as a whole and how it interacts with a real guest operating systems.
+For this reason, Nitro includes a suite of integration tests that try out the
+different features in a test environment with virtual machines. The environment
+enables us to automatically run test binaries inside real virtual machines and
+checks that Nitro can correctly analyze their actions.</p>
+<div class="section" id="creating-a-testing-vm">
+<h3>Creating a Testing VM<a class="headerlink" href="#creating-a-testing-vm" title="Permalink to this headline">¶</a></h3>
+<p>Before actual testing can take place, a virtual machine needs to be created. For
+tests to be deterministic, the VM must be constructed in a way that allows us to
+know exactly what gets included and what the result will be. This is to make
+sure we can reliably replicate problems that might arise during testing.
+Additionally, the virtual machine images we use for testing are specifically
+optimized for testing purposes with unnecessary services disabled.</p>
+<p>Nitro includes <a class="reference external" href="https://www.packer.io">Packer</a> virtual machine templates for
+building the test environment. The <code class="docutils literal"><span class="pre">tests/vm_templates</span></code> directory includes the
+<code class="docutils literal"><span class="pre">packer</span></code> binary itself and templates for Linux and Windows testing
+environments. With the templates in place, we can simply ask packer to create
+the VM for us:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>tester@kvm-vmi ~/projects/nitro/tests/vm_templates $ ./packer build --var-file ubuntu_1604_x64.json ubuntu.json 
+qemu output will be in this color.
+
+==&gt; qemu: Downloading or copying ISO
+    qemu: Downloading or copying: http://releases.ubuntu.com/16.04/ubuntu-16.04.2-server-amd64.iso
+==&gt; qemu: Creating floppy disk...
+    qemu: Copying files flatly from floppy_files
+    qemu: Copying file: http/preseed.cfg
+    qemu: Done copying files from floppy_files
+    qemu: Collecting paths from floppy_dirs
+    qemu: Resulting paths from floppy_dirs : []
+    qemu: Done copying paths from floppy_dirs
+==&gt; qemu: Creating hard drive...
+==&gt; qemu: Starting HTTP server on port 8288
+==&gt; qemu: Found port for communicator (SSH, WinRM, etc): 3679.
+==&gt; qemu: Looking for available port between 5900 and 6000 on 127.0.0.1
+==&gt; qemu: Starting VM, booting from CD-ROM
+    qemu: The VM will be run headless, without a GUI. If you want to
+    qemu: view the screen of the VM, connect via VNC without a password to
+    qemu: vnc://127.0.0.1:5933
+==&gt; qemu: Overriding defaults Qemu arguments with QemuArgs...
+==&gt; qemu: Waiting 10s for boot...
+==&gt; qemu: Connecting to VM via VNC
+==&gt; qemu: Typing the boot command over VNC...
+==&gt; qemu: Waiting for SSH to become available...
+==&gt; qemu: Connected to SSH!
+==&gt; qemu: Uploading linux/ =&gt; /tmp
+==&gt; qemu: Provisioning with shell script: /tmp/packer-shell277821116
+    qemu: [sudo] password for vagrant: Generating grub configuration file ...
+    qemu: Warning: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.
+    qemu: Found linux image: /boot/vmlinuz-4.4.0-62-generic
+    qemu: Found initrd image: /boot/initrd.img-4.4.0-62-generic
+    qemu: done
+    qemu: Removed symlink /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service.
+==&gt; qemu: Gracefully halting virtual machine...
+    qemu: [sudo] password for vagrant:
+==&gt; qemu: Converting hard drive...
+Build &#39;qemu&#39; finished.
+
+==&gt; Builds finished. The artifacts of successful builds are:
+--&gt; qemu: VM files in directory: output-qemu
+</pre></div>
+</div>
+<p>After the process finishes, we have to import the created VM into <code class="docutils literal"><span class="pre">libvirt</span></code>.
+This can be done automatically with the included <code class="docutils literal"><span class="pre">import_libvirt.py</span></code> script.
+Depending on the way your <code class="docutils literal"><span class="pre">libvirt</span></code> installation is configured, the script
+might require superuser privileges. To import the newly constructed VM run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># ./import_libvirt.py output-qemu/ubuntu1604</span>
+</pre></div>
+</div>
+<p>The import script will create a new storage pool with the name <code class="docutils literal"><span class="pre">nitro</span></code> at the
+<code class="docutils literal"><span class="pre">tests/images</span></code> directory and move the generated VM image there from the
+<code class="docutils literal"><span class="pre">output-qemu</span></code> directory where Packer left it. Subsequently, the script will
+define a new <code class="docutils literal"><span class="pre">libvirt</span></code> domain for the machine and associate the image with it.
+The domain is created with system <code class="docutils literal"><span class="pre">libvirt</span></code> instance. Finally the script will
+remove the unnecessary <code class="docutils literal"><span class="pre">output-qemu</span></code> directory.</p>
+</div>
+<div class="section" id="running-the-tests">
+<h3>Running the Tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h3>
+<p>Once the virtual machine is in place, we can proceed to actual testing. Nitro’s
+integration tests work by first restoring the testing virtual machine to a clean
+state from a snapshot. After this, the test runner packages the selected test
+binary into an ISO image that can be attached to the virtual machine. To run the
+tests, the test runner boots up the VM, waits for it to settle, and attaches the
+disc image to it. Each testing virtual machine contains special configuration
+for automatically executing the attached test images. Finally, test runner
+attaches Nitro to the virtual machine and monitors the execution. At the end,
+each test case can check the produced execution traces for features interesting
+to them.</p>
+<p>While all this might seem complicated, all the hard work is done automatically
+by the testing framework. To run the test suite, simply invoke <code class="docutils literal"><span class="pre">nose2</span></code> within
+the <code class="docutils literal"><span class="pre">tests</span></code> directory. Running all the tests can be time consuming, and
+therefore, it is often desirable to only run some of the tests. This can be
+achieved by specifying the test case manually:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ nose2 --verbose test_linux.TestLinux.test_open
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nitro.html" class="btn btn-neutral float-right" title="nitro package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial.html" class="btn btn-neutral" title="Tutorial: Finding Out What Notepad is Doing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

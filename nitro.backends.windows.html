@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nitro.backends.windows package &mdash; nitro 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="nitro 0.0.1 documentation" href="index.html"/>
+        <link rel="up" title="nitro.backends package" href="nitro.backends.html"/>
+        <link rel="prev" title="nitro.backends.linux package" href="nitro.backends.linux.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nitro
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command-line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Finding Out What Notepad is Doing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Developing Nitro: Testing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="nitro.html">nitro package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nitro.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nitro.backends.html">nitro.backends package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="nitro.backends.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.arguments">nitro.backends.arguments module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.backend">nitro.backends.backend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.factory">nitro.backends.factory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends.process">nitro.backends.process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nitro.backends.html#module-nitro.backends">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.event">nitro.event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.kvm">nitro.kvm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.libvmi">nitro.libvmi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.listener">nitro.listener module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.nitro">nitro.nitro module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro.syscall">nitro.syscall module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nitro.html#module-nitro">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nitro</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="nitro.html">nitro package</a> &raquo;</li>
+        
+          <li><a href="nitro.backends.html">nitro.backends package</a> &raquo;</li>
+        
+      <li>nitro.backends.windows package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nitro.backends.windows.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nitro-backends-windows-package">
+<h1>nitro.backends.windows package<a class="headerlink" href="#nitro-backends-windows-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nitro.backends.windows.arguments">
+<span id="nitro-backends-windows-arguments-module"></span><h2>nitro.backends.windows.arguments module<a class="headerlink" href="#module-nitro.backends.windows.arguments" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.backends.windows.arguments.WindowsArgumentMap">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.arguments.</code><code class="descname">WindowsArgumentMap</code><span class="sig-paren">(</span><em>event</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.arguments.WindowsArgumentMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nitro.backends.html#nitro.backends.arguments.ArgumentMap" title="nitro.backends.arguments.ArgumentMap"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.arguments.ArgumentMap</span></code></a></p>
+<p><code class="docutils literal"><span class="pre">WindowsArgumentMap</span></code> provides read and write access to system call arguments.</p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.arguments.WindowsArgumentMap.CONVENTION">
+<code class="descname">CONVENTION</code><em class="property"> = {&lt;SyscallType.syscall: 1&gt;: [(&lt;SyscallArgumentType.register: 0&gt;, 'rcx'), (&lt;SyscallArgumentType.register: 0&gt;, 'rdx'), (&lt;SyscallArgumentType.register: 0&gt;, 'r8'), (&lt;SyscallArgumentType.register: 0&gt;, 'r9'), (&lt;SyscallArgumentType.memory: 1&gt;, 5)]}</em><a class="headerlink" href="#nitro.backends.windows.arguments.WindowsArgumentMap.CONVENTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.windows.backend">
+<span id="nitro-backends-windows-backend-module"></span><h2>nitro.backends.windows.backend module<a class="headerlink" href="#module-nitro.backends.windows.backend" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.backends.windows.backend.WindowsBackend">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.backend.</code><code class="descname">WindowsBackend</code><span class="sig-paren">(</span><em>domain</em>, <em>libvmi</em>, <em>listener</em>, <em>syscall_filtering=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nitro.backends.html#nitro.backends.backend.Backend" title="nitro.backends.backend.Backend"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.backend.Backend</span></code></a></p>
+<p>Extract information about system calls produced by the guest. This backend
+supports 66-bit Windows 7 guests.</p>
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.add_syscall_filter">
+<code class="descname">add_syscall_filter</code><span class="sig-paren">(</span><em>syscall_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.add_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.associate_process">
+<code class="descname">associate_process</code><span class="sig-paren">(</span><em>cr3</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.associate_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.define_hook">
+<code class="descname">define_hook</code><span class="sig-paren">(</span><em>name</em>, <em>callback</em>, <em>direction=&lt;SyscallDirection.enter: 0&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.define_hook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.find_eprocess">
+<code class="descname">find_eprocess</code><span class="sig-paren">(</span><em>cr3</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.find_eprocess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.find_syscall_nb">
+<code class="descname">find_syscall_nb</code><span class="sig-paren">(</span><em>syscall_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.find_syscall_nb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.get_syscall_name">
+<code class="descname">get_syscall_name</code><span class="sig-paren">(</span><em>rax</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.get_syscall_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.load_symbols">
+<code class="descname">load_symbols</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.load_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.nb_vcpu">
+<code class="descname">nb_vcpu</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.nb_vcpu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.pdbase_offset">
+<code class="descname">pdbase_offset</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.pdbase_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.process_event">
+<code class="descname">process_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.process_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.processes">
+<code class="descname">processes</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.processes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.remove_syscall_filter">
+<code class="descname">remove_syscall_filter</code><span class="sig-paren">(</span><em>syscall_name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.remove_syscall_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.sdt">
+<code class="descname">sdt</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.sdt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.symbols">
+<code class="descname">symbols</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.syscall_stack">
+<code class="descname">syscall_stack</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.syscall_stack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.backend.WindowsBackend.tasks_offset">
+<code class="descname">tasks_offset</code><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.tasks_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nitro.backends.windows.backend.WindowsBackend.undefine_hook">
+<code class="descname">undefine_hook</code><span class="sig-paren">(</span><em>name</em>, <em>direction=&lt;SyscallDirection.enter: 0&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.WindowsBackend.undefine_hook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nitro.backends.windows.backend.clean_name">
+<code class="descclassname">nitro.backends.windows.backend.</code><code class="descname">clean_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.backend.clean_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.windows.process">
+<span id="nitro-backends-windows-process-module"></span><h2>nitro.backends.windows.process module<a class="headerlink" href="#module-nitro.backends.windows.process" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.backends.windows.process.WindowsProcess">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.process.</code><code class="descname">WindowsProcess</code><span class="sig-paren">(</span><em>libvmi</em>, <em>cr3</em>, <em>eproc</em>, <em>symbols</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="nitro.backends.html#nitro.backends.process.Process" title="nitro.backends.process.Process"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.process.Process</span></code></a></p>
+<dl class="method">
+<dt id="nitro.backends.windows.process.WindowsProcess.as_dict">
+<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.command_line">
+<code class="descname">command_line</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.command_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.create_time">
+<code class="descname">create_time</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.create_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.eproc">
+<code class="descname">eproc</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.eproc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.iswow64">
+<code class="descname">iswow64</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.iswow64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.name">
+<code class="descname">name</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.parent_pid">
+<code class="descname">parent_pid</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.parent_pid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.path">
+<code class="descname">path</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.pid">
+<code class="descname">pid</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.pid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.process.WindowsProcess.symbols">
+<code class="descname">symbols</code><a class="headerlink" href="#nitro.backends.windows.process.WindowsProcess.symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.windows.types">
+<span id="nitro-backends-windows-types-module"></span><h2>nitro.backends.windows.types module<a class="headerlink" href="#module-nitro.backends.windows.types" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nitro.backends.windows.types.AccessMask">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">AccessMask</code><span class="sig-paren">(</span><em>desired_access</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.AccessMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.AccessMask.STANDARD_RIGHTS">
+<code class="descname">STANDARD_RIGHTS</code><em class="property"> = [(65536, 'DELETE'), (131072, 'READ_CONTROL'), (262144, 'WRITE_DAC'), (524288, 'WRITE_OWNER'), (1048576, 'SYNCHRONIZE'), (16777216, 'ACCESS_SYSTEM_SECURITY'), (33554432, 'MAXIMUM_ALLOWED'), (268435456, 'GENERIC_ALL'), (536870912, 'GENERIC_EXECUTE'), (1073741824, 'GENERIC_WRITE'), (2147483648, 'GENERIC_READ')]</em><a class="headerlink" href="#nitro.backends.windows.types.AccessMask.STANDARD_RIGHTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.ClientID">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">ClientID</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.ClientID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.ClientID.UniqueProcess">
+<code class="descname">UniqueProcess</code><a class="headerlink" href="#nitro.backends.windows.types.ClientID.UniqueProcess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.ClientID.UniqueThread">
+<code class="descname">UniqueThread</code><a class="headerlink" href="#nitro.backends.windows.types.ClientID.UniqueThread" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.FileAccessMask">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">FileAccessMask</code><span class="sig-paren">(</span><em>desired_access</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.FileAccessMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.AccessMask" title="nitro.backends.windows.types.AccessMask"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.AccessMask</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileAccessMask.SPECIFIC_RIGHTS">
+<code class="descname">SPECIFIC_RIGHTS</code><em class="property"> = [(1, 'FILE_READ_DATA'), (2, 'FILE_WRITE_DATA'), (4, 'FILE_APPEND_DATA'), (8, 'FILE_READ_EA'), (16, 'FILE_WRITE_EA'), (32, 'FILE_EXECUTE'), (128, 'FILE_READ_ATTRIBUTES'), (256, 'FILE_WRITE_ATTRIBUTES')]</em><a class="headerlink" href="#nitro.backends.windows.types.FileAccessMask.SPECIFIC_RIGHTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.FileBasicInformation">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">FileBasicInformation</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.FileBasicInformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileBasicInformation.ChangeTime">
+<code class="descname">ChangeTime</code><a class="headerlink" href="#nitro.backends.windows.types.FileBasicInformation.ChangeTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileBasicInformation.CreationTime">
+<code class="descname">CreationTime</code><a class="headerlink" href="#nitro.backends.windows.types.FileBasicInformation.CreationTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileBasicInformation.FileAttributes">
+<code class="descname">FileAttributes</code><a class="headerlink" href="#nitro.backends.windows.types.FileBasicInformation.FileAttributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileBasicInformation.LastAccessTime">
+<code class="descname">LastAccessTime</code><a class="headerlink" href="#nitro.backends.windows.types.FileBasicInformation.LastAccessTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileBasicInformation.LastWriteTime">
+<code class="descname">LastWriteTime</code><a class="headerlink" href="#nitro.backends.windows.types.FileBasicInformation.LastWriteTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.FileDispositionInformation">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">FileDispositionInformation</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.FileDispositionInformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileDispositionInformation.DeleteFile">
+<code class="descname">DeleteFile</code><a class="headerlink" href="#nitro.backends.windows.types.FileDispositionInformation.DeleteFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.FileRenameInformation">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">FileRenameInformation</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.FileRenameInformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileRenameInformation.FileName">
+<code class="descname">FileName</code><a class="headerlink" href="#nitro.backends.windows.types.FileRenameInformation.FileName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileRenameInformation.FileNameLength">
+<code class="descname">FileNameLength</code><a class="headerlink" href="#nitro.backends.windows.types.FileRenameInformation.FileNameLength" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileRenameInformation.ReplaceIfExists">
+<code class="descname">ReplaceIfExists</code><a class="headerlink" href="#nitro.backends.windows.types.FileRenameInformation.ReplaceIfExists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.FileRenameInformation.RootDirectory">
+<code class="descname">RootDirectory</code><a class="headerlink" href="#nitro.backends.windows.types.FileRenameInformation.RootDirectory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="nitro.backends.windows.types.InconsistentMemoryError">
+<em class="property">exception </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">InconsistentMemoryError</code><a class="headerlink" href="#nitro.backends.windows.types.InconsistentMemoryError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.LargeInteger">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">LargeInteger</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.LargeInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.LargeInteger.HighPartQuadPart">
+<code class="descname">HighPartQuadPart</code><a class="headerlink" href="#nitro.backends.windows.types.LargeInteger.HighPartQuadPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.LargeInteger.LowPart">
+<code class="descname">LowPart</code><a class="headerlink" href="#nitro.backends.windows.types.LargeInteger.LowPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.ObjectAttributes">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">ObjectAttributes</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.ObjectAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.ObjectAttributes.Length">
+<code class="descname">Length</code><a class="headerlink" href="#nitro.backends.windows.types.ObjectAttributes.Length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.ObjectAttributes.ObjectName">
+<code class="descname">ObjectName</code><a class="headerlink" href="#nitro.backends.windows.types.ObjectAttributes.ObjectName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.ObjectAttributes.RootDirectory">
+<code class="descname">RootDirectory</code><a class="headerlink" href="#nitro.backends.windows.types.ObjectAttributes.RootDirectory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.PEB">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">PEB</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.PEB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.PEB.ProcessParameters">
+<code class="descname">ProcessParameters</code><a class="headerlink" href="#nitro.backends.windows.types.PEB.ProcessParameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.RtlUserProcessParameters">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">RtlUserProcessParameters</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.RtlUserProcessParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.RtlUserProcessParameters.CommandLine">
+<code class="descname">CommandLine</code><a class="headerlink" href="#nitro.backends.windows.types.RtlUserProcessParameters.CommandLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.RtlUserProcessParameters.ImagePathName">
+<code class="descname">ImagePathName</code><a class="headerlink" href="#nitro.backends.windows.types.RtlUserProcessParameters.ImagePathName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.UnicodeString">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">UnicodeString</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.UnicodeString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nitro.backends.windows.types.WinStruct" title="nitro.backends.windows.types.WinStruct"><code class="xref py py-class docutils literal"><span class="pre">nitro.backends.windows.types.WinStruct</span></code></a></p>
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.UnicodeString.Buffer">
+<code class="descname">Buffer</code><a class="headerlink" href="#nitro.backends.windows.types.UnicodeString.Buffer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.UnicodeString.Length">
+<code class="descname">Length</code><a class="headerlink" href="#nitro.backends.windows.types.UnicodeString.Length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nitro.backends.windows.types.UnicodeString.MaximumLength">
+<code class="descname">MaximumLength</code><a class="headerlink" href="#nitro.backends.windows.types.UnicodeString.MaximumLength" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nitro.backends.windows.types.WinStruct">
+<em class="property">class </em><code class="descclassname">nitro.backends.windows.types.</code><code class="descname">WinStruct</code><span class="sig-paren">(</span><em>addr</em>, <em>process</em><span class="sig-paren">)</span><a class="headerlink" href="#nitro.backends.windows.types.WinStruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nitro.backends.windows">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nitro.backends.windows" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="nitro.backends.linux.html" class="btn btn-neutral" title="nitro.backends.linux package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

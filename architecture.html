@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Architecture Overview &mdash; nitro 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="nitro 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Tutorial: Finding Out What Notepad is Doing" href="tutorial.html"/>
+        <link rel="prev" title="Command-line Interface" href="commandline.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> nitro
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command-line Interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#virtual-machines">Virtual Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nitro">Nitro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-listeners">Event Listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analysis-back-ends">Analysis Back ends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-info-objects">Process Info Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#system-call-argument-access">System Call Argument Access</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Finding Out What Notepad is Doing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Developing Nitro: Testing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nitro.html">nitro package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nitro</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Architecture Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="architecture-overview">
+<h1>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we take a look at how the project is structured and how the
+different components fit together.</p>
+<div class="figure align-center" id="id1">
+<img alt="Nitro's architecture" src="_images/nitro-architecture.svg" /><p class="caption"><span class="caption-text">Main components of Nitro. Listener receives low-level events from the kernel
+and passes them to the user through the frameworks namesake <a class="reference internal" href="nitro.html#nitro.nitro.Nitro" title="nitro.nitro.Nitro"><code class="xref py py-class docutils literal"><span class="pre">Nitro</span></code></a>
+class. The user can then decide to request for additional analysis from one
+of Nitro’s back ends. Back ends transform the low-level events into system
+call events that contain additional useful information such as the process
+where the system call originated and offer an easy way to access the
+arguments of the call.</span></p>
+</div>
+<div class="section" id="virtual-machines">
+<h2>Virtual Machines<a class="headerlink" href="#virtual-machines" title="Permalink to this headline">¶</a></h2>
+<p>Nitro depends on <a class="reference external" href="https://libvirt.org">libvirt</a> to manage virtual machine
+life cycle and configuration for it. Through the libvirt API, Nitro can start,
+stop and pause virtual machines without having to directly deal with the
+hypervisor.</p>
+<p>Internally, QEMU makes use of Linux’s <a class="reference external" href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">KVM</a> feature for
+supporting hardware assisted virtualization.</p>
+<p>libvirt’s <a class="reference external" href="https://libvirt.org/docs.html">documentation</a> offers additional
+instructions on how to install and use it to effectively manage virtual
+machines.</p>
+</div>
+<div class="section" id="nitro">
+<h2>Nitro<a class="headerlink" href="#nitro" title="Permalink to this headline">¶</a></h2>
+<p>Framework’s namesake <a class="reference internal" href="nitro.html#nitro.nitro.Nitro" title="nitro.nitro.Nitro"><code class="xref py py-class docutils literal"><span class="pre">Nitro</span></code></a> class acts as a frontend for accessing
+much of the functionality. By creating a Nitro object, we can start listening
+for events from the virtual machine and, optionally, access an analysis back end
+associated with the guest’s operating system.</p>
+<p>Throughout the framework, you will find a heavy use of Python’s <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#typecontextmanager">context
+managers</a>
+in the APIs to ease reasource management. For example, <a class="reference internal" href="nitro.html#nitro.nitro.Nitro" title="nitro.nitro.Nitro"><code class="xref py py-class docutils literal"><span class="pre">Nitro</span></code></a> objects
+automatically stop their associated <a class="reference internal" href="#listeners"><span class="std std-ref">listeners</span></a> and, if
+instantiated, <a class="reference internal" href="#backends"><span class="std std-ref">back ends</span></a>.</p>
+</div>
+<div class="section" id="event-listeners">
+<span id="listeners"></span><h2>Event Listeners<a class="headerlink" href="#event-listeners" title="Permalink to this headline">¶</a></h2>
+<p>Nitro’s <a class="reference internal" href="nitro.html#nitro.listener.Listener" title="nitro.listener.Listener"><code class="xref py py-class docutils literal"><span class="pre">Listener</span></code></a> enables subscribing to events from the kernel
+regarding a particular virtual machine. Listener issues a set of Nitro specific
+<a class="reference external" href="https://en.wikipedia.org/wiki/Ioctl">IOCTL</a> commands to the KVM in order to
+attach to a particular virtual CPU belonging to the virtual machine being
+monitored.</p>
+<p>Listener’s <a class="reference internal" href="nitro.html#nitro.listener.Listener.listen" title="nitro.listener.Listener.listen"><code class="xref py py-meth docutils literal"><span class="pre">listen()</span></code></a> method is a generator that produces a
+series of <a class="reference internal" href="nitro.html#nitro.event.NitroEvent" title="nitro.event.NitroEvent"><code class="xref py py-class docutils literal"><span class="pre">NitroEvent</span></code></a> objects. These objects represent the low-level
+state of the machine when the system call took place. They contain information
+about the registers and whether the machine was entering or exiting a system
+call. Additionally, the events record which of the (possibly many) virtual CPU’s
+associated with the machine was responsible the event.</p>
+</div>
+<div class="section" id="analysis-back-ends">
+<span id="backends"></span><h2>Analysis Back ends<a class="headerlink" href="#analysis-back-ends" title="Permalink to this headline">¶</a></h2>
+<p>While knowing the register values is nice, for many real-world applications a
+higher-level view of the system if often preferred. <a class="reference internal" href="nitro.backends.html#nitro.backends.backend.Backend" title="nitro.backends.backend.Backend"><code class="xref py py-class docutils literal"><span class="pre">Backend</span></code></a> classes
+transform the lower-level events that listeners produce into something more
+useful. Since back ends depend on intricate knowledge of operating system
+specific internals, they are specific to a particular operating system. Nitro
+ships with back ends for 64-bit Windows 7 Professional and Linux. The
+<a class="reference internal" href="nitro.html#nitro.nitro.Nitro" title="nitro.nitro.Nitro"><code class="xref py py-class docutils literal"><span class="pre">Nitro</span></code></a> class automatically initializes a suitable back end based on
+the virtual machine’s operating system.</p>
+<p>Back ends <code class="xref py py-meth docutils literal"><span class="pre">process_event()</span></code> produces a <a class="reference internal" href="nitro.html#nitro.syscall.Syscall" title="nitro.syscall.Syscall"><code class="xref py py-class docutils literal"><span class="pre">Syscall</span></code></a> object based on
+the <a class="reference internal" href="nitro.html#nitro.event.NitroEvent" title="nitro.event.NitroEvent"><code class="xref py py-class docutils literal"><span class="pre">NitroEvent</span></code></a> object given to it. System call objects offer a
+higher-level representation of the machine’s state by associating the event with
+a logical name (<code class="docutils literal"><span class="pre">open</span></code>, <code class="docutils literal"><span class="pre">write</span></code>, <code class="docutils literal"><span class="pre">NtCreateProcess</span></code>…) and finding the
+process that caused it.</p>
+<p>For the analysis to be possible, back ends have to have access to the virtual
+machines memory. This access is granted by the custom version of QEMU that Nitro
+depends on. The current back ends make use of <a class="reference external" href="http://libvmi.com/">libvmi</a> to
+dissect virtual machine’s memory.</p>
+</div>
+<div class="section" id="process-info-objects">
+<h2>Process Info Objects<a class="headerlink" href="#process-info-objects" title="Permalink to this headline">¶</a></h2>
+<p>As a whole, virtual machines typically produce a lot of system call events. For
+practical purposes, it is often useful to concentrate only on a tiny fraction of
+the events that the system produces. Knowing which process caused the event is
+useful for separating interesting events from the noise.</p>
+<p>Back ends associate each system call with the process that originated them.
+Process information is stored in <a class="reference internal" href="nitro.backends.html#nitro.backends.process.Process" title="nitro.backends.process.Process"><code class="xref py py-class docutils literal"><span class="pre">Process</span></code></a> objects. These are specific
+to each back end as they can contain operating system specific process
+information. For example, the Windows specific <a class="reference internal" href="nitro.backends.windows.html#nitro.backends.windows.process.WindowsProcess" title="nitro.backends.windows.process.WindowsProcess"><code class="xref py py-class docutils literal"><span class="pre">WindowsProcess</span></code></a> class
+knows whether or not the process is running in the 32-bit mode. What is common
+between the different implementations is the process objects all contain some
+form of process ID and the name of the program binary associated with the
+process.</p>
+</div>
+<div class="section" id="system-call-argument-access">
+<h2>System Call Argument Access<a class="headerlink" href="#system-call-argument-access" title="Permalink to this headline">¶</a></h2>
+<p>With analysis back ends, we can have a rough idea about what the system is doing
+by looking at which system calls processes are invoking. However, this is often
+not enough as we would like to also know the arguments for each call. It is much
+more useful to know which file the monitored program is trying to access than to
+simply know that it is trying to access something. For this purpose, analysis
+back ends associate an <a class="reference internal" href="nitro.backends.html#nitro.backends.arguments.ArgumentMap" title="nitro.backends.arguments.ArgumentMap"><code class="xref py py-class docutils literal"><span class="pre">ArgumentMap</span></code></a> with each system call event.</p>
+<p><a class="reference internal" href="nitro.backends.html#nitro.backends.arguments.ArgumentMap" title="nitro.backends.arguments.ArgumentMap"><code class="xref py py-class docutils literal"><span class="pre">ArgumentMap</span></code></a> allows inspecting and modifying the arguments passed to
+each system call. Argument map abstracts operating system specific system call
+conventions and makes it possible to access arguments through a list-like
+object. As with <a class="reference internal" href="nitro.backends.html#nitro.backends.process.Process" title="nitro.backends.process.Process"><code class="xref py py-class docutils literal"><span class="pre">Process</span></code></a> objects, argument maps are specific to each
+back end as they depend on intricate knowledge about system call conventions.</p>
+<p>By indexing argument map objects, we can get the raw values passed in through
+registers and/or memory, depending on the calling conventions. However, it is
+noteworthy that Nitro does not currently try to further analyze the content of
+these values and this is left to the user if they require such functionality.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is ongoing work on designing mechanisms for easier extraction of
+higher-level data structures from the raw arguments. This space is
+likely going to change as the work progresses further.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial: Finding Out What Notepad is Doing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="commandline.html" class="btn btn-neutral" title="Command-line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
